@@ -67,6 +67,11 @@
 		<h2>Gestão Imóveis</h2>
 		<a <?php selecionadoMenu('cadastrar-empreendimento'); ?> href="<?php echo INCLUDE_PATH_PAINEL ?>cadastrar-empreendimento">Cadastrar Empreendimento</a>
 		<a <?php selecionadoMenu('listar-empreendimentos'); ?> href="<?php echo INCLUDE_PATH_PAINEL ?>listar-empreendimentos">Listar Empreendimentos</a>
+		<h2>Gestão EAD</h2>
+		<a <?php selecionadoMenu('novo-aluno'); ?> href="<?php echo INCLUDE_PATH_PAINEL ?>novo-aluno">Novo Aluno</a>
+		<a <?php selecionadoMenu('novo-modulo'); ?> href="<?php echo INCLUDE_PATH_PAINEL ?>novo-modulo">Novo Módulo</a>
+		<a <?php selecionadoMenu('nova-aula'); ?> href="<?php echo INCLUDE_PATH_PAINEL ?>nova-aula">Nova Aula</a>
+		
 	</div><!--items-menu-->
 	</div><!--menu-wraper-->
 </div><!--menu-->
