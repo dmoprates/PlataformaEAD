@@ -11,7 +11,19 @@
 <base base="<?php echo INCLUDE_PATH; ?>" />
 <header>
 	<div class="container">
-		
+		<div class="logo"><a href="<?php echo INCLUDE_PATH; ?>">Plataforma EAD</a></div>
+		<nav class="desktop">
+			<ul>
+				<li><a href="">Conheça o curso</a></li>
+				<li><a href="">Sobre</a></li>
+				<li><a href="">Contato</a></li>
+				<?php
+					if(isset($_SESSION['login_aluno'])){
+						echo '<li><a style="text-decoration:underline;" href="'.INCLUDE_PATH.'?deslogar">Deslogar!</a></li>';
+					}
+				?>
+			</ul>
+		</nav><!--desktop-->
 		<div class="clear"></div>
 	</div><!--container-->
 </header>

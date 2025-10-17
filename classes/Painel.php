@@ -38,9 +38,12 @@
 			$str = preg_replace('/(_|\/|!|\?|#)/', '',$str);
 			$str = preg_replace('/( )/', '-',$str);
 			$str = preg_replace('/ç/','c',$str);
-			$str = preg_replace('/(-[-]{1,})/','-',$str);
 			$str = preg_replace('/(,)/','-',$str);
 			$str = preg_replace('/(\+)/','-',$str);
+			$str = preg_replace('/:/','-',$str);
+			$str = preg_replace('/\(|\)|\[|\]|\{|\}/','',$str);
+			$str = preg_replace('/(-{1,})/','-',$str);
+			$sr = str_replace('.','',$str);
 			$str=strtolower($str);
 			return $str;
 		}

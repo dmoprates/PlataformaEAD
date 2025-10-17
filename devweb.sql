@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 04-Nov-2017 às 23:51
+-- Generation Time: 05-Nov-2017 às 21:36
 -- Versão do servidor: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -49,6 +49,49 @@ INSERT INTO `tb_admin.agenda` (`id`, `tarefa`, `data`) VALUES
 (8, 'tarefa para o dia 03', '2017-10-03'),
 (9, 'Tarefa nova', '2017-10-02'),
 (10, 'tarefa 2 para o dia 03', '2017-10-03');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tb_admin.alunos`
+--
+
+CREATE TABLE `tb_admin.alunos` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `senha` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tb_admin.alunos`
+--
+
+INSERT INTO `tb_admin.alunos` (`id`, `nome`, `email`, `senha`) VALUES
+(1, 'Guilherme', 'guilhermegrillo.13@gmail.com', '909090');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tb_admin.aulas`
+--
+
+CREATE TABLE `tb_admin.aulas` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `modulo_id` int(11) NOT NULL,
+  `link_aula` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tb_admin.aulas`
+--
+
+INSERT INTO `tb_admin.aulas` (`id`, `nome`, `modulo_id`, `link_aula`) VALUES
+(1, 'Conhecendo o HTML', 1, 'http://youtube.com'),
+(2, 'Conceitos da web', 1, 'https://www.youtube.com/embed/hVB6dmoyUaU?autoplay=1'),
+(3, 'Iniciando projeto', 2, 'http://youtube.com'),
+(4, 'Aplicando AJAX', 2, 'https://www.youtube.com/embed/cdT-gYSYO7s');
 
 -- --------------------------------------------------------
 
@@ -109,6 +152,17 @@ CREATE TABLE `tb_admin.clientes` (
 INSERT INTO `tb_admin.clientes` (`id`, `nome`, `email`, `tipo`, `cpf_cnpj`, `imagem`) VALUES
 (1, 'Guilherme', 'gui_grillo1@hotmail.com', 'Admin', '09888181', ''),
 (2, 'Joao', 'joao@hotmail.com', 'funcionario', '090909090', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tb_admin.curso_controle`
+--
+
+CREATE TABLE `tb_admin.curso_controle` (
+  `id` int(11) NOT NULL,
+  `aluno_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -224,6 +278,25 @@ CREATE TABLE `tb_admin.imoveis` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `tb_admin.modulos`
+--
+
+CREATE TABLE `tb_admin.modulos` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tb_admin.modulos`
+--
+
+INSERT INTO `tb_admin.modulos` (`id`, `nome`) VALUES
+(1, 'Introdução e conceitos'),
+(2, 'Projeto Prático');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `tb_admin.online`
 --
 
@@ -239,7 +312,8 @@ CREATE TABLE `tb_admin.online` (
 --
 
 INSERT INTO `tb_admin.online` (`id`, `ip`, `ultima_acao`, `token`) VALUES
-(12, '::1', '2017-11-04 20:46:31', '59fe3abe665a4');
+(17, '::1', '2017-11-05 18:15:55', '59ff6e4de9d81'),
+(18, '::1', '2017-11-05 18:34:24', '59ff74cd569e6');
 
 -- --------------------------------------------------------
 
@@ -316,7 +390,8 @@ INSERT INTO `tb_admin.visitas` (`id`, `ip`, `dia`) VALUES
 (8, '::1', '2017-10-15'),
 (9, '::1', '2017-10-23'),
 (10, '::1', '2017-10-27'),
-(11, '::1', '2017-11-03');
+(11, '::1', '2017-11-03'),
+(12, '::1', '2017-11-05');
 
 -- --------------------------------------------------------
 
@@ -437,6 +512,18 @@ ALTER TABLE `tb_admin.agenda`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tb_admin.alunos`
+--
+ALTER TABLE `tb_admin.alunos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_admin.aulas`
+--
+ALTER TABLE `tb_admin.aulas`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tb_admin.chat`
 --
 ALTER TABLE `tb_admin.chat`
@@ -446,6 +533,12 @@ ALTER TABLE `tb_admin.chat`
 -- Indexes for table `tb_admin.clientes`
 --
 ALTER TABLE `tb_admin.clientes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_admin.curso_controle`
+--
+ALTER TABLE `tb_admin.curso_controle`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -482,6 +575,12 @@ ALTER TABLE `tb_admin.imagens_imoveis`
 -- Indexes for table `tb_admin.imoveis`
 --
 ALTER TABLE `tb_admin.imoveis`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_admin.modulos`
+--
+ALTER TABLE `tb_admin.modulos`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -548,6 +647,16 @@ ALTER TABLE `tb_site.slides`
 ALTER TABLE `tb_admin.agenda`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
+-- AUTO_INCREMENT for table `tb_admin.alunos`
+--
+ALTER TABLE `tb_admin.alunos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `tb_admin.aulas`
+--
+ALTER TABLE `tb_admin.aulas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT for table `tb_admin.chat`
 --
 ALTER TABLE `tb_admin.chat`
@@ -556,6 +665,11 @@ ALTER TABLE `tb_admin.chat`
 -- AUTO_INCREMENT for table `tb_admin.clientes`
 --
 ALTER TABLE `tb_admin.clientes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `tb_admin.curso_controle`
+--
+ALTER TABLE `tb_admin.curso_controle`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tb_admin.empreendimentos`
@@ -588,10 +702,15 @@ ALTER TABLE `tb_admin.imagens_imoveis`
 ALTER TABLE `tb_admin.imoveis`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `tb_admin.modulos`
+--
+ALTER TABLE `tb_admin.modulos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `tb_admin.online`
 --
 ALTER TABLE `tb_admin.online`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `tb_admin.pedidos`
 --
@@ -606,7 +725,7 @@ ALTER TABLE `tb_admin.usuarios`
 -- AUTO_INCREMENT for table `tb_admin.visitas`
 --
 ALTER TABLE `tb_admin.visitas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `tb_site.categorias`
 --

@@ -5,17 +5,19 @@
 
 		<?php
 			if(isset($_POST['acao'])){
-                $nome = $_POST['nome'];
-                $senha = $_POST['senha'];
-                $email = $_POST['email'];
+			
+				$nome = $_POST['nome'];
+				$email = $_POST['email'];
+				$senha = $_POST['senha'];
 
-                if($nome == '' || $senha == '' || $email == ''){
-                    Painel::alert('erro', 'Preencha todos os campos!');
-                }else {
-                    $sql = MySql::conectar()->prepare("INSERT INTO `tb_admin.alunos` VALUES (null, ?, ?, ?)");
-                    $sql->execute(array($nome, $email, $senha));
-                    Painel::alert('sucesso', 'Aluno cadastrado com sucesso!');
-                }
+				if($nome == '' || $email == '' || $senha == ''){
+					Painel::alert('erro','Você precisa preencher todos os campos!');
+				}else{
+					$sql = \MySql::conectar()->prepare("INSERT INTO `tb_admin.alunos` VALUES (null,?,?,?)");
+					$sql->execute(array($nome,$email,$senha));
+					Painel::alert('sucesso','O aluno foi cadastrado com sucesso!');
+				}
+				
 
 			}
 		?>
@@ -31,13 +33,15 @@
 		</div><!--form-group-->
 
 		<div class="form-group">
-			<label>E-mail:</label>
+			<label>E-mail</label>
 			<input type="text" name="email">
 		</div><!--form-group-->
 
 		<div class="form-group">
-		    <input type="submit" name="acao" value="Cadastrar Aluno!">
+			<input type="submit" name="acao" value="Cadastrar aluno!">
 		</div><!--form-group-->
+
+
 
 	</form>
 
